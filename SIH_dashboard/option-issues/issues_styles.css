@@ -1,0 +1,47 @@
+body{
+    margin:0;
+}
+*{
+    box-sizing:border-box;
+}
+:root{
+    --gov-blue:#2B79C7;
+    --shadow-white:#EEEEF0;
+}
+#top-header{
+    display:flex;
+    background-color:var(--gov-blue);
+    width:100vw;
+    height: 70px;
+    align-items:center;
+    padding:0 24px;
+}
+.web-flyer{
+    width:1049px;
+    background-color:var(--cool-white);
+    box-shadow:0.625em 0.625em 1.25em 1.25em var(--shadow-white);
+    margin:16px auto;
+    padding:25px;
+    border-radius:10px;
+    border:1px solid #e2e2e2;
+    min-height:fit-content;
+}
+#main-content{
+    padding:30px;
+    max-width:1400px;
+}
+#institution-table{
+    border:1px solid black;
+    border-spacing:50px;
+    margin:auto;
+}
+#approve{
+    background-color:rgb(43, 178, 43);
+}
+#reject{
+    background-color:rgb(252, 62, 62);
+}
+#approve-reject-div{
+    width:280px;
+    margin:auto;
+}

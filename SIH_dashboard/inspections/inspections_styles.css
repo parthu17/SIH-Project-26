@@ -1,0 +1,8 @@
+#inspection-table{
+    border:1px solid black;
+    border-spacing:50px;
+    margin:auto;
+}
+#op-2,#op-3,#op-4{
+    display:none !important;
+}

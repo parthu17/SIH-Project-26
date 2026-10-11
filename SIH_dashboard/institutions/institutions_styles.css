@@ -1,0 +1,52 @@
+*{
+    box-sizing:border-box;
+}
+:root{
+    --gov-blue:#2B79C7;
+    --shadow-white:#EEEEF0;
+}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f6f8;
+}
+#top-header{
+    display:flex;
+    background-color:var(--gov-blue);
+    width:100vw;
+    height: 70px;
+    align-items:center;
+    justify-content:start;
+    padding:0 24px;
+}
+#institution-table{
+    border:1px solid black;
+    border-spacing:50px;
+    margin:auto;
+}
+h2{
+    margin-left:34px;
+}
+form{
+    display:flex;
+    justify-content:space-around;
+    margin-bottom:90px;
+}
+#page-nos{
+    margin:auto;
+    width:10px;
+}
+.page-no{
+    margin-right:5px;
+    color:#2B79C7;
+}
+.page-no:hover{
+    cursor:pointer;
+    color:#931C88;
+}
+.table-options{
+    cursor:pointer;
+}
+.table-options:hover{
+    background-color:#2B79C7;
+}

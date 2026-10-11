@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Government Monitoring Portal</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" href="dashboard_styles.css">
+    </head>
+    <body>
+        <header id="top-header">
+            <button id="menu-icon">☰</button>
+            <h1>Government Monitoring Portal</h1>
+            <p id="login-info">🔔 Admin/Official</p>
+        </header>
+        <div class="layout">
+            <aside id="side-menu">
+            <p class="side-option" id="dashboard-op">Dashboard</p>
+            <p class="side-option" id="institutions-op">Institutions</p>
+            <p class="side-option" id="inspections-op">Inspections</p>
+            <p class="side-option" id="issues-op">Issues</p>
+            <p class="side-option" id="analytics-op">Analytics</p>
+            </aside>
+            <main id="main-content">
+                <p id="goodmoring" class="greeting">Good Morning, Admin</p>
+                <p class="greeting">Here's what's happening today.</p>
+            <div id="caseUpdateShower" class="web-flyer">
+                <div class="caseUpdater institutes">
+                    <p class="casecurrnum">248</p>
+                    <p>Institutions</p>
+                </div>
+                <div class="caseUpdater inspectors">
+                    <p class="casecurrnum">126</p>
+                    <p>Inspectors</p>
+                </div>
+                <div class="caseUpdater pending">
+                    <p class="casecurrnum">18</p>
+                    <p>Pending</p>
+            </div>
+        </div>
+        <div id="chart-div" class="web-flyer">
+                <p><strong>Inspection Overview</strong></p>
+                <img src="./bar-graph.jpg" alt="inspection bar graph" id="bar-graph"/>
+        </div>
+        <h2>Recent Inspections</h2>
+        <hr>
+        <div id="current-status-div" class="web-flyer">
+            <table id="current-status-table">
+                <thead>
+                    <tr>
+                        <th>Institution</th>
+                        <th>Inspector</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>ABC Centre</th>
+                        <td>Rahul</td>
+                        <td>05 Sep</td>
+                        <td>✅ Completed</td>
+                    </tr>
+                    <tr>
+                        <th>XYZ Institute</th>
+                        <td>Priya</td>
+                        <td>05 Sep</td>
+                        <td>⚠️ Flagged</td>
+                    </tr>
+                    <tr>
+                        <th>DEF Welfare Centre</th>
+                        <td>Arjun</td>
+                        <td>04 Sep</td>
+                        <td>⏳ Pending</td>
+                    </tr>
+                </tbody>
+            <table>
+        </div>
+    </main>
+    </body>
+    <script src="dashboard_funct.js"></script>
+</html>

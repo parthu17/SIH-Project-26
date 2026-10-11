@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Institutions</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" href="institutions_styles.css">
+    </head>
+    <body>
+        <header id="top-header">
+            <h1>Institutions</h1>
+        </header>
+        <h2>Manage and monitor registered institutions</h2>
+        <main id="main-content">
+            <form>
+                <div id="search-div">
+                    <label for="search_bar">Search:</label>
+                    <input type="text" id="search_bar" placeholder="🔍"/>
+                </div>
+                <div id="radio-div">
+                    <input type="radio" id="ascending-radio" name="order"/>
+                    <label for="ascending-radio">Completed to Pending</label>
+                    <input type="radio" id="descending-radio" name="order"/>
+                    <label for="descending-radio">Pending to Completed</label>
+                </div>
+            </form>
+            <table id="institution-table">
+                <tbody>
+                    <tr>
+                        <th>Institution </th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Last Inspect</th>
+                    </tr>
+                    <tr id="option-1" class="table-options">
+                        <th>ABC Centre</th>
+                        <td>Hyd</td>
+                        <td>✅ Completed</td>
+                         <td>05 Sep</td>
+                    </tr>
+                    <tr id="option-2" class="table-options">
+                        <th>XYZ Institute</th>
+                        <td>Warangal</td>
+                        <td>⚠️ Flagged</td>
+                        <td>26 Aug</td>
+                    </tr>
+                    <tr id="option-3" class="table-options">
+                        <th>DEF Welfare</th>
+                        <td>Nizamabad</td>
+                        <td>⏳ Pending</td>
+                        <td>28 Aug</td>
+                    </tr>
+                    <tr id="option-4" class="table-options">
+                        <th>GHI Foundation</th>
+                        <td>Karimnagar</td>
+                        <td>✅ Completed</td>
+                        <td>05 Sep</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </main>
+        <footer>
+            <div id="page-nos"><span id="one" class="page-no">1</span><span id="two" class="page-no">2</span><span id="three" class="page-no">3</span><span id="four" class="page-no">4</span><span id="arrow" class="page-no">→</span></div>
+        </footer>
+        
+    </body>
+    <script src="institutions_funct.js"></script>
+</html>
