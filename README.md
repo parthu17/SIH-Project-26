@@ -7,10 +7,8 @@ The platform combines a centralized monitoring dashboard with a field-inspector 
 ## Features
 
 - **Dashboard:** Centralized overview of inspection activities and key metrics.
-- **Analytics:** Visualize inspection data and compliance statistics.
 - **Institution Management:** View and manage institution-related information.
 - **Inspection Management:** Track inspection records and their statuses.
-- **Field Inspector Workflow:** Phone-frame interface for the inspector experience.
 - **Pending Assignments:** View inspections awaiting action.
 - **Risk Monitoring:** Display risk scores and identify potentially high-risk institutions.
 - **Photo Uploads:** Attach inspection photos through the backend API.
@@ -21,6 +19,7 @@ The platform combines a centralized monitoring dashboard with a field-inspector 
 **Frontend**
 - React
 - Vite
+- HTML
 - JavaScript
 - CSS
 
@@ -38,7 +37,7 @@ The platform combines a centralized monitoring dashboard with a field-inspector 
 ## Project Structure
 
 ```text
-Inspectra/
+SIH-Project/
 ├── backend/
 │   ├── main.py
 │   ├── crud.py
@@ -69,15 +68,13 @@ Ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd Inspectra
+git clone https://github.com/parthu17/SIH-Project-26.git
+cd SIH-Project
 ```
-
-Replace the placeholder with your actual GitHub repository URL.
 
 ### 2. Run the Backend
 
-Open a terminal and execute:
+Open a terminal in `SIH-main` directory:
 
 ```bash
 cd backend
@@ -88,14 +85,14 @@ uvicorn main:app --reload --port 8000
 The FastAPI backend will run at:
 
 - **API base URL:** http://localhost:8000
-- **Interactive API documentation:** http://localhost:8000/docs
+- **Interactive API documentation(Swagger UI):** http://localhost:8000/docs
 - **Uploaded photos:** Served through the `/uploads/` endpoint.
 
 Uploaded inspection photos are stored locally in `backend/uploads/`.
 
 ### 3. Run the Frontend
 
-Open a second terminal from the project root:
+Open a second terminal from `SIH-main`:
 
 ```bash
 cd frontend
@@ -133,7 +130,7 @@ The database connection is configured in `backend/database.py`. For deployment o
 
 ### Risk Assessment
 
-Risk-score calculations and surprise-inspection weighting are implemented server-side in `backend/crud.py`. Keeping this logic in the backend helps centralize risk assessment and business rules.
+Risk-score calculations and surprise-inspection weighting are implemented server-side in `backend/crud.py` taking into consideration the previous risk and the flagged status.
 
 ### Photo Storage
 
