@@ -16,34 +16,36 @@ def new_id(prefix):
 
 
 def seed_if_empty(db: Session):
-    if db.query(models.Institution).count() == 0:
-        for i in SEED_INSTITUTIONS:
-            db.add(models.Institution(**i))
-    if db.query(models.Inspection).count() == 0:
-        for i in SEED_INSPECTIONS:
-            db.add(models.Inspection(**i))
-    db.commit()
+    if (
+        db.query(models.Institution).count()
+        or db.query(models.Inspection).count()
+        or db.query(models.PendingAssignment).count()
+    ):
+        return
 
-
-def reset_demo(db: Session):
-    db.query(models.Institution).delete()
-    db.query(models.Inspection).delete()
-    db.query(models.PendingAssignment).delete()
+    for i in SEED_INSTITUTIONS:
+        db.add(models.Institution(**i))
+    for i in SEED_INSPECTIONS:
+        db.add(models.Inspection(**i))
     db.commit()
-    seed_if_empty(db)
 
 
 def list_institutions(db: Session):
-    return [i.to_dict() for i in db.query(models.Institution).all()]
+    rows = db.query(models.Institution).order_by(models.Institution.id).all()
+    return [i.to_dict() for i in rows]
 
 
 def list_inspections(db: Session):
-    rows = db.query(models.Inspection).order_by(models.Inspection.timestamp.desc()).all()
+    rows = db.query(models.Inspection).order_by(
+        models.Inspection.timestamp.desc(), models.Inspection.id
+    ).all()
     return [i.to_dict() for i in rows]
 
 
 def list_pending(db: Session):
-    rows = db.query(models.PendingAssignment).order_by(models.PendingAssignment.created_at.desc()).all()
+    rows = db.query(models.PendingAssignment).order_by(
+        models.PendingAssignment.created_at.desc(), models.PendingAssignment.id
+    ).all()
     return [p.to_dict() for p in rows]
 
 
@@ -93,6 +95,8 @@ def submit_inspection(db: Session, institution_id, inspector, attendance, expect
 
     pending = db.query(models.PendingAssignment).filter(
         models.PendingAssignment.institution_id == inst.id
+    ).order_by(
+        models.PendingAssignment.created_at, models.PendingAssignment.id
     ).first()
     if pending:
         db.delete(pending)
@@ -103,7 +107,7 @@ def submit_inspection(db: Session, institution_id, inspector, attendance, expect
 
 
 def trigger_surprise(db: Session):
-    institutions = db.query(models.Institution).all()
+    institutions = db.query(models.Institution).order_by(models.Institution.id).all()
     if not institutions:
         raise ValueError("No institutions")
 

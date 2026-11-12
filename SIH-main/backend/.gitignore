@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 inspectra.db
 uploads/
+.venv/
+.env

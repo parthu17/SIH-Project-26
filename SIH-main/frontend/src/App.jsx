@@ -5,9 +5,8 @@ import {
   Video, Zap, Clock, Building2, ClipboardList, Wifi, Sparkles, ArrowUpRight, ArrowDownRight
 } from "lucide-react";
 import {
-  API_ORIGIN, getInstitutions, getInspections, getPending,
-  submitInspection as apiSubmitInspection, triggerSurprise as apiTriggerSurprise,
-  resetDemo as apiResetDemo
+  getPhotoUrl, getInstitutions, getInspections, getPending,
+  submitInspection as apiSubmitInspection, triggerSurprise as apiTriggerSurprise
 } from "./api";
 
 // ---------- design tokens ----------
@@ -98,8 +97,6 @@ function GlobalStyle() {
       .ix-scrollbar::-webkit-scrollbar-thumb { background: ${C.line}; border-radius: 4px; }
       .ix-bar-fill { transition: width .5s cubic-bezier(.34,1.2,.64,1); }
       .ix-badge { transition: background .3s ease, color .3s ease; }
-      .ix-reset-icon { transition: transform .4s ease; }
-      .ix-reset:hover .ix-reset-icon { transform: rotate(180deg); }
     `}</style>
   );
 }
@@ -171,12 +168,6 @@ export default function App() {
     notify(`Surprise inspection assigned to ${assignment.inspector}`, "info");
   }, [load, notify]);
 
-  const resetDemo = useCallback(async () => {
-    await apiResetDemo();
-    await load();
-    notify("Demo data reset", "info");
-  }, [load, notify]);
-
   if (loading || !institutions) {
     return (
       <div className="ix" style={{ fontFamily: FONT, background: C.paper, minHeight: 500, display: "flex", alignItems: "center", justifyContent: "center", color: C.steel, gap: 8 }}>
@@ -190,7 +181,7 @@ export default function App() {
     <div className="ix" style={{ fontFamily: FONT, background: C.paper, minHeight: 600, color: C.ink, position: "relative" }}>
       <GlobalStyle />
       <Toast toast={toast} />
-      <TopBar view={view} setView={setView} clock={clock} onReset={resetDemo} pendingCount={pending.length} />
+      <TopBar view={view} setView={setView} clock={clock} pendingCount={pending.length} />
       {view === "dashboard" ? (
         <Dashboard key="dash" institutions={institutions} inspections={inspections} pending={pending} onSurprise={triggerSurprise} />
       ) : (
@@ -201,7 +192,7 @@ export default function App() {
 }
 
 // ---------- top bar ----------
-function TopBar({ view, setView, clock, onReset, pendingCount }) {
+function TopBar({ view, setView, clock, pendingCount }) {
   return (
     <div style={{
       display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -227,12 +218,6 @@ function TopBar({ view, setView, clock, onReset, pendingCount }) {
         <span style={{ fontFamily: MONO, fontSize: 12, color: "#9AA7BD" }}>
           {new Date(clock).toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" })}
         </span>
-        <button onClick={onReset} title="Reset demo data" className="ix-btn-ghost ix-reset" style={{
-          display: "flex", alignItems: "center", gap: 6, background: "transparent", border: "1px solid #3E4C63",
-          color: "#C9D2E0", borderRadius: 6, padding: "6px 10px", fontSize: 12, cursor: "pointer",
-        }}>
-          <RefreshCw size={13} className="ix-reset-icon" /> Reset
-        </button>
         <div style={{ display: "flex", background: "#0F1929", borderRadius: 8, padding: 3 }}>
           <ToggleBtn active={view === "dashboard"} onClick={() => setView("dashboard")} icon={<LayoutDashboard size={14} />} label="Dashboard" />
           <ToggleBtn active={view === "inspector"} onClick={() => setView("inspector")} icon={<Smartphone size={14} />} label="Inspector App" />
@@ -684,7 +669,7 @@ function DoneScreen({ record, onDone }) {
           : "No issues found. Institution risk score updated."}
       </div>
       {record.photoUrl && (
-        <img src={`${API_ORIGIN}${record.photoUrl}`} alt="evidence" style={{ width: 84, height: 84, objectFit: "cover", borderRadius: 10, marginTop: 14 }} />
+        <img src={getPhotoUrl(record.photoUrl)} alt="evidence" style={{ width: 84, height: 84, objectFit: "cover", borderRadius: 10, marginTop: 14 }} />
       )}
       {typeof record.prevRisk === "number" && (
         <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12, fontSize: 12, fontFamily: MONO, color: C.inkSoft }}>

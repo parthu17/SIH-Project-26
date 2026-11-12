@@ -1,5 +1,11 @@
-export const API_ORIGIN = import.meta.env.VITE_API_BASE || "http://localhost:8000";
+export const API_ORIGIN = import.meta.env.VITE_API_URL || "http://localhost:8000";
 const API = `${API_ORIGIN}/api`;
+
+export function getPhotoUrl(photoUrl) {
+  if (!photoUrl) return "";
+  if (/^https?:\/\//i.test(photoUrl)) return photoUrl;
+  return `${API_ORIGIN}${photoUrl.startsWith("/") ? "" : "/"}${photoUrl}`;
+}
 
 export async function getInstitutions() {
   const r = await fetch(`${API}/institutions`);
@@ -38,7 +44,3 @@ export async function triggerSurprise() {
   return r.json();
 }
 
-export async function resetDemo() {
-  const r = await fetch(`${API}/reset`, { method: "POST" });
-  return r.json();
-}
