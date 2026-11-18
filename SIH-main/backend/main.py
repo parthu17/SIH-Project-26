@@ -23,7 +23,11 @@ app = FastAPI(title="Inspectra API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origin.strip() for origin in os.getenv("CORS_ORIGINS", "*").split(",") if origin.strip()],
+    allow_origins=[
+        origin.strip().rstrip("/")
+        for origin in os.getenv("CORS_ORIGINS", "*").split(",")
+        if origin.strip().rstrip("/")
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
