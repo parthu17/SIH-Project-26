@@ -169,4 +169,4 @@ We acknowledge Smart India Hackathon for providing the problem statement and an 
 
 **Project Name:** Inspectra  
 **Problem Statement ID:** SIH26095  
-**Domain:** Web Development | Institutional Monitoring | Inspection Management | Compliance Analytics
+**Domain:** Web Development | Institutional Monitoring | Inspection Management | Compliance Analytics 
