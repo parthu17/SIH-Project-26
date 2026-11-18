@@ -14,7 +14,7 @@ const fourthoption=document.getElementById("option-4");
 fourthoption.addEventListener("click",()=>{
     window.location.href="../option-institutions/4thcentre.html";
 });
-fetch("http://127.0.0.1:8000/api/institutions")
+fetch(`${window.API_URL}/api/institutions`)
     .then(response => response.json())
     .then(data => {
         const tableBody = document.querySelector("#institution-table tbody");

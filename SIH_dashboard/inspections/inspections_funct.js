@@ -16,7 +16,7 @@ fourth_option.addEventListener("click",()=>{
 });
 
 
-fetch('http://127.0.0.1:8000/api/inspections')
+fetch(`${window.API_URL}/api/inspections`)
     .then(response => response.json())
     .then(inspectionsArray => {
         

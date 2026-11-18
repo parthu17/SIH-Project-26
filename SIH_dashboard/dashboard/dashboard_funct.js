@@ -19,14 +19,12 @@ analytics.addEventListener('click',()=>{
     window.location.href="../analytics/analytics_index.html"
 });
 
-const BASE_URL = ''; 
-
 async function loadDashboardData() {
     try {
         
         const [institutionsRes, inspectionsRes] = await Promise.all([
-            fetch(`http://127.0.0.1:8000/api/institutions`),
-            fetch(`http://127.0.0.1:8000/api/inspections`)
+            fetch(`${window.API_URL}/api/institutions`),
+            fetch(`${window.API_URL}/api/inspections`)
         ]);
 
         if (!institutionsRes.ok || !inspectionsRes.ok) {

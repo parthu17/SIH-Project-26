@@ -1,4 +1,4 @@
-const API_URL = 'http://127.0.0.1:8000/api/inspections';
+const API_URL = `${window.API_URL}/api/inspections`;
 
 async function fetchInspectionData() {
     try {
@@ -95,7 +95,7 @@ function renderData(data) {
         if (photoContainer) {
             if (data.photoUrl) {
                 const img = document.createElement('img');
-                img.src = data.photoUrl.startsWith('http') ? data.photoUrl : `http://127.0.0.1:8000${data.photoUrl}`; 
+                img.src = data.photoUrl.startsWith('http') ? data.photoUrl : `${window.API_URL}${data.photoUrl}`;
                 img.alt = "Inspection Evidence Photo";
                 img.style.maxWidth = "100%";
                 img.style.borderRadius = "8px";
