@@ -2,7 +2,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-SQLALCHEMY_DATABASE_URL = os.getenv("postgresql://postgres.epftzreilddekmfwapdg:inspectraisthebest@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres", "sqlite:///./inspectra.db")
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./inspectra.db")
 
 # Render gives "postgres://" or "postgresql://"; use the psycopg2 driver explicitly.
 if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
