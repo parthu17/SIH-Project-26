@@ -28,7 +28,7 @@ The risk score and flag are deterministic application rules, not an AI/ML predic
 ![Government Dashboard](docs/dashboard.png)
 ![Inspection Submission](docs/inspectionsubmission.png)
 ![Dashboard Submission Display](docs/dashboard-display/dashboardInspectiondisplay1.png)
-![Workflow Demo Video](https://drive.google.com/file/d/1DPnrRlegT9pnhUyLsjDr2du6COsKmXQ-/view?usp=sharing)
+Workflow Demo video is present as a drive link in the docs folder with the file name `
 
 ## Architecture
 
