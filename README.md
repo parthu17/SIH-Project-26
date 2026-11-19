@@ -24,9 +24,10 @@ The risk score and flag are deterministic application rules, not an AI/ML predic
 
 ## Screenshots and Demo
 
-<!-- TODO: Add a screenshot at docs/screenshots/react-dashboard.png. -->
-<!-- TODO: Add a screenshot at docs/screenshots/react-inspector.png. -->
-<!-- TODO: Add a screenshot at docs/screenshots/html-dashboard.png. -->
+![Inspector App](docs/inspectorApp.png)
+![Government Dashboard](docs/dashboard.png)
+![Inspection Submission](docs/inspectionsubmission.png)
+![Dashboard Submission Display](docs/)
 
 <!-- TODO: Add a demo video URL, or add a video file at docs/demo.mp4. -->
 
